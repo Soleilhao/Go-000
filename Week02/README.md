@@ -13,8 +13,8 @@ sql.ErrNoRows 是标准库的函数，dao层需要对其做wrap包装。但不�
 ```go
 //service UserService
 func GetUser(id int) User {
-	b := UserBiz{}
-	user, err := b.GetUser(id)
+    b := UserBiz{}
+    user, err := b.GetUser(id)
     if err!=nil{
         fmt.Printf("%+v\r\n", err)
         //handle the error and return
@@ -22,24 +22,24 @@ func GetUser(id int) User {
 	//that based on the business/real scenario.
         return User{}
     }
-	return user
+    return user
 }
 
 //biz UserBiz
 func GetUser(id int) (User, error) {
-	d := UserDao{}
-	return d.GetUser(id)
+    d := UserDao{}
+    return d.GetUser(id)
 }
 
 //dao UerDao
 func GetUser(id int) (User, error) {
-	var u User
-	if id >= 1 && id <= 10 {
-	    u = User{accountID: id, firstName: "Hello", lastName: "world"}
-	    return u, nil
-	}
-	u = User{}
-	var message = fmt.Sprintf("dao: user not found. (id:%d)", id)
-	return u, errors.Wrapf(sql.ErrNoRows, message)
+    var u User
+    if id >= 1 && id <= 10 {
+        u = User{accountID: id, firstName: "Hello", lastName: "world"}
+	return u, nil
+    }
+    u = User{}
+    var message = fmt.Sprintf("dao: user not found. (id:%d)", id)
+    return u, errors.Wrapf(sql.ErrNoRows, message)
 }
 ```
