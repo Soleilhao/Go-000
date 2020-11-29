@@ -8,6 +8,7 @@ sql.ErrNoRows 是标准库的函数，需要对其做wrap操作。但不应该�
 
 大致代码如下：
 
+```go
 //service UserService
 func GetUser(id int) User {
 	b := UserBiz{}
@@ -38,3 +39,4 @@ func GetUser(id int) (User, error) {
 	var message = fmt.Sprintf("dao: user not found. (id:%d)", id)
 	return u, errors.Wrapf(sql.ErrNoRows, message)
 }
+```
