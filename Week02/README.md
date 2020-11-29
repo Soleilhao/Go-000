@@ -19,6 +19,7 @@ func GetUser(id int) User {
         fmt.Printf("%+v\r\n", err)
         //handle the error and return
         //for example: return 404 not found / an empty response body.
+	//that based on the business/real scenario.
         return User{}
     }
 	return user
@@ -34,8 +35,8 @@ func GetUser(id int) (User, error) {
 func GetUser(id int) (User, error) {
 	var u User
 	if id >= 1 && id <= 10 {
-		u = User{accountID: id, firstName: "Hello", lastName: "world"}
-		return u, nil
+	    u = User{accountID: id, firstName: "Hello", lastName: "world"}
+	    return u, nil
 	}
 	u = User{}
 	var message = fmt.Sprintf("dao: user not found. (id:%d)", id)
