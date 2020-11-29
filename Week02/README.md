@@ -43,3 +43,21 @@ func GetUser(id int) (User, error) {
     return u, errors.Wrapf(sql.ErrNoRows, message)
 }
 ```
+
+Log 
+```powershell
+	sql: no rows in result set
+dao: user not found. (id:0)
+Go-000/Week02/service.(*UserDao).GetUser
+        C:/Go-workspace/src/Go-000/Week02/service/dao.go:18
+Go-000/Week02/service.(*UserBiz).GetUser
+        C:/Go-workspace/src/Go-000/Week02/service/biz.go:8
+Go-000/Week02/service.(*UserService).GetUser
+        C:/Go-workspace/src/Go-000/Week02/service/service.go:15
+main.main
+        C:/Go-workspace/src/Go-000/week02/app/main.go:16
+runtime.main
+        c:/go/src/runtime/proc.go:204
+runtime.goexit
+        c:/go/src/runtime/asm_amd64.s:1374
+```
